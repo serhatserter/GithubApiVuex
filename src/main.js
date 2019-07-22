@@ -20,7 +20,7 @@ const router = new VueRouter({
   routes: [
     { path: "/", component: Search },
     { path: "/Repos", component: Repos },
-    { path: "/Profile", component: Profile }
+    { path: "/Profile/:username", component: Profile }
   ],
   mode: "history"
 });
@@ -29,5 +29,4 @@ new Vue({
   render: h => h(App),
   store,
   router
-  
 }).$mount("#app");

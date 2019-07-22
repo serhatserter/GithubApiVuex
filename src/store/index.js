@@ -10,7 +10,8 @@ const state = {
   users: [],
   userdetails: [],
   selectinguser: "",
-  repos: []
+  repos: [],
+  starred: []
 };
 
 const getters = {
@@ -33,6 +34,10 @@ const mutations = {
 
   SET_REPOS(state, repos) {
     state.repos = repos;
+  },
+
+  SET_STARRED(state, starred) {
+    state.starred = starred;
   },
 
   SET_SELECT_USER(state, selectinguser) {
@@ -59,13 +64,18 @@ const actions = {
 
   searchRepos({ commit, state }) {
     Vue.axios
-      .get(`https://api.github.com/users/${state.selectinguser.login}/repos`)
+      .get(`https://api.github.com/users/${state.mainsearch}/repos`)
       .then(response => {
-        commit("SET_REPOS", response.data.items);
+        commit("SET_REPOS", response.data);
       });
-      
+  },
+  fetchStarred({ commit, state }) {
+    Vue.axios
+      .get(`https://api.github.com/users/${state.mainsearch}/starred`)
+      .then(response => {
+        commit("SET_STARRED", response.data);
+      });
   }
-
 };
 
 const store = new Vuex.Store({

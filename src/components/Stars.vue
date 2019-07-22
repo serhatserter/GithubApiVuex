@@ -1,19 +1,19 @@
 <template>
 <transition name="fade" mode="out-in">
   <div id="app">
-      <h1>REPOS</h1>
+      <h1>STARS</h1>
 
-      <div class="repos">
-      <label v-for="(repo, i) in repos" :key="i">
-      <div class="repo">     
+      
+      <label v-for="(star, i) in starred" :key="i">
+      <div class="user">     
         
-          <h4>{{repo.name}}</h4>
-          <p>{{repo.description}}</p>
+          <h4>Name: {{star.name}}</h4>
+          <b-button :href="star.svn_url" target="_blank" >Go Project</b-button>
 
       </div>      
       
     </label>
-  </div>
+
   </div>
 </transition>
 </template>
@@ -22,7 +22,7 @@
 import {mapState, mapGetters, mapActions} from 'vuex';
 
 export default {
-    name: "Repos",
+    name: "Stars",
     data(){
         return{
             
@@ -33,7 +33,7 @@ export default {
     
     ...mapState([
       'selectinguser',
-      'repos'
+      'starred'
     ]),
 
     ...mapGetters([
@@ -50,24 +50,11 @@ export default {
 
 
 
-  },
-
+  }
   
 }
 </script>
 
 <style>
 
-.repos{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.repo{
-  display: inherit;
-  border-style: solid;
-  width: 500px;
-  padding: 20px;
-}
 </style>

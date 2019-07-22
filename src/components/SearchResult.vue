@@ -1,5 +1,5 @@
 <template>
-<transition name="fade" mode="out-in">
+
   <div id="app">
     <div class="users">
     <label v-for="(user, i) in users" :key="i">
@@ -8,9 +8,12 @@
         
         <div class="userdetail">
           <h3 >@ {{ user.login }}</h3>
-          <b-button to="/Profile" @click="selectingUserButton(user)" >See Details</b-button>
-          <b-button :href="user.html_url" target="_blank" >Go Github Profile</b-button>
+          <b-button class="buton" :to="`/Profile/${user.login}`">See Details</b-button>
+          <b-button class="buton" :href="user.html_url" target="_blank" >Go Github Profile</b-button>
           
+          <transition name="router-anim" enter-active-class="animated fadeInDown" leave-active-class="animated fadeOutDown">
+            <router-view/>
+          </transition>
         </div>
 
       </div>
@@ -22,7 +25,7 @@
 
   
   </div>
-</transition>
+
   
 </template>
 
@@ -41,7 +44,7 @@ export default {
         'mainsearch',
         'users',
         'selectinguser',
-        
+        'repos'
 
     ]),
 
@@ -49,31 +52,24 @@ export default {
 
     ]),
 
-    
   },
 
   methods: {
     ...mapActions([
       'updateSelectingUser',
       'searchRepos',
+      'fetchStarred',
 
     ]),
-
-    selectingUserButton(val){
-        this.updateSelectingUser(val);
-        this.updateSelectingUser;
-
-        this.searchRepos();
-        this.searchRepos;
-        console.log(this.searchRepos());
-        
-    }
 
   }
 }
 </script>
 
 <style>
+
+@import "https://cdn.jsdelivr.net/npm/animate.css@3.5.1";
+
 .user{
   display: inherit;
   border-style: solid;
@@ -93,8 +89,8 @@ export default {
   display: inline-block;
 
 }
-b-button{
+.buton{
 
-  padding: 10px;
+  margin-right: 10px;
 }
 </style>
