@@ -1,4 +1,5 @@
 <template>
+<transition name="fade" mode="out-in">
   <div id="app">
     <div class="users">
     <label v-for="(user, i) in users" :key="i">
@@ -7,20 +8,22 @@
         
         <div class="userdetail">
           <h3 >@ {{ user.login }}</h3>
-          <b-button >Get Details</b-button>
-          <b-button :href="user.html_url" target="_blank" >Go Profile</b-button>
+          <b-button to="/Profile" @click="selectingUserButton(user)" >See Details</b-button>
+          <b-button :href="user.html_url" target="_blank" >Go Github Profile</b-button>
+          
         </div>
 
       </div>
-        <!--
-        <b-button :href="user.html_url" target="_blank">Profile</b-button>
-        <b-button :href="user.followers_url" target="_blank">Followers</b-button>
-        <b-button :href="user.following_url" target="_blank">Following</b-button>
-        -->
+
+        
       
     </label>
   </div>
+
+  
   </div>
+</transition>
+  
 </template>
 
 <script>
@@ -36,18 +39,35 @@ export default {
   computed: {
     ...mapState([
         'mainsearch',
-        'users'
+        'users',
+        'selectinguser',
+        
+
     ]),
 
     ...mapGetters([
 
     ]),
+
+    
   },
 
   methods: {
     ...mapActions([
+      'updateSelectingUser',
+      'searchRepos',
 
     ]),
+
+    selectingUserButton(val){
+        this.updateSelectingUser(val);
+        this.updateSelectingUser;
+
+        this.searchRepos();
+        this.searchRepos;
+        console.log(this.searchRepos());
+        
+    }
 
   }
 }

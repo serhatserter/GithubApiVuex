@@ -1,11 +1,15 @@
 <template>
   <div id="app">
-    <search></search>
+    <transition name="fade" mode="out-in">
+    <router-view></router-view>
+    </transition>
   </div>
 </template>
 
 <<script>
 import Search from './components/Search.vue'
+
+
 import Vue from 'vue'
 import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
