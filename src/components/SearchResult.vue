@@ -39,21 +39,19 @@ export default {
 @import "https://cdn.jsdelivr.net/npm/animate.css@3.5.1";
 
 .user {
-  display: inherit;
-  background-color: lightgray; 
-  width: 400px;
+  display: inline-block;
+  background-color: white; 
+  width: 500px;
   padding: 20px;
   
 }
 .users {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   
 }
 .userdetail {
-
+  display: inline-block;
   padding-left: 20px;
 
 

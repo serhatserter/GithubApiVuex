@@ -49,8 +49,8 @@ export default {
 }
 .repo {
   display: inherit;
-  border-style: solid;
-  width: 500px;
+  background-color: white;
+  width: 700px;
   padding: 20px;
 }
 </style>

@@ -1,13 +1,14 @@
 <template>
   <div id="app">
-    <h1 class="searchElements">GitHub Api & Vuex Example</h1>
+    <h1 style="padding:30px;">GitHub Api & Vuex Example</h1>
 
     <div class="searchElements">
       <input v-model="searchInput" @keyup.enter="searchButton" />
-      <b-button class="searchbutton" @click="searchButton">Search</b-button>
+      <b-button variant="info" class="searchbutton" @click="searchButton">Search</b-button>
     </div>
-
+    <br>
     <search-result></search-result>
+
   </div>
 </template>
 
@@ -52,6 +53,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: darkslategrey;
 }
 
 input {
@@ -64,4 +66,5 @@ input {
   margin: 10px;
   height: 40px;
 }
+
 </style>

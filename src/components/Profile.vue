@@ -1,5 +1,4 @@
 <template>
-  <transition name="fade" mode="out-in">
     <div id="app">
       <div class ="bioBack">
         <br />
@@ -42,8 +41,10 @@
         </b-tab>
 
       </b-tabs>
+
     </div>
-  </transition>
+
+
 </template>
 
 <script>
@@ -116,4 +117,5 @@ img {
   background-color: darkslategray;
   color:whitesmoke;
 }
+
 </style>
