@@ -10,8 +10,8 @@
       <b-tabs content-class="mt-3">
         <b-tab title="Repos" active><repos></repos></b-tab>
         <b-tab title="Stars" active><stars></stars></b-tab>
-        <b-tab title="Following" active><p>Following</p></b-tab>
-        <b-tab title="Followers" active><p>Followers</p></b-tab>
+        <b-tab title="Following" active><following></following></b-tab>
+        <b-tab title="Followers" active><followers></followers></b-tab>
 
       </b-tabs>
       
@@ -22,10 +22,13 @@
 <script>
 import Repos from './Repos.vue'
 import Stars from './Stars.vue'
+import Following from './Following.vue'
+import Followers from './Followers.vue'
+
 import {mapState, mapGetters, mapActions} from 'vuex';
 
 export default {
-    components: { Repos, Stars },
+    components: { Repos, Stars, Following, Followers },
     name: "Profile",
     data(){
         return{
@@ -38,7 +41,8 @@ export default {
     ...mapState([
       'selectinguser',
       'mainsearch',
-      'users'
+      'users',
+      
       
     ]),
 
@@ -54,19 +58,26 @@ export default {
       'setMainSearch',
       'updateMainSearch',
       'searchRepos',
-      'fetchStarred'
+      'fetchStarred',
+      'fetchFollowing',
+      'fetchFollowers'
     ]),
 
   },
     created(){
+      
       this.updateMainSearch(this.$route.params.username);
       
       this.searchUsers();
       this.searchRepos();
       this.fetchStarred();
+      this.fetchFollowing();
+      this.fetchFollowers();
 
 
     }  
+
+    
 }
 </script>
 

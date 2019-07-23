@@ -9,6 +9,8 @@
         
           <h4>{{repo.name}}</h4>
           <p>{{repo.description}}</p>
+          <b-button :to="`/Profile/${mainsearch}/${repo.name}`">See Details</b-button>
+          <router-view/>
 
       </div>      
       
@@ -20,8 +22,11 @@
 
 <script>
 import {mapState, mapGetters, mapActions} from 'vuex';
+import RepoDetail from "./RepoDetail.vue";
+
 
 export default {
+  components: { RepoDetail },
     name: "Repos",
     data(){
         return{
@@ -32,8 +37,12 @@ export default {
   computed: {
     
     ...mapState([
-      'selectinguser',
-      'repos'
+      'mainsearch',
+      'repos',
+      'repodetail',
+      'reponame',
+
+
     ]),
 
     ...mapGetters([
@@ -45,13 +54,13 @@ export default {
 
   methods: {
     ...mapActions([
-
+        'updateRepoName',
+        'fetchRepoDetail',
     ]),
 
 
 
   },
-
   
 }
 </script>

@@ -11,7 +11,11 @@ const state = {
   userdetails: [],
   selectinguser: "",
   repos: [],
-  starred: []
+  starred: [],
+  following: [],
+  followers: [],
+  reponame: "",
+  repodetail: []
 };
 
 const getters = {
@@ -36,12 +40,28 @@ const mutations = {
     state.repos = repos;
   },
 
+  SET_REPO_NAME(state, reponame) {
+    state.reponame = reponame;
+  },
+
   SET_STARRED(state, starred) {
     state.starred = starred;
   },
 
+  SET_FOLLOWING(state, following) {
+    state.following = following;
+  },
+
+  SET_FOLLOWERS(state, followers) {
+    state.followers = followers;
+  },
+
   SET_SELECT_USER(state, selectinguser) {
     state.selectinguser = selectinguser;
+  },
+
+  SET_REPODETAIL(state, repodetail) {
+    state.repodetail = repodetail;
   }
 };
 
@@ -52,6 +72,10 @@ const actions = {
 
   updateSelectingUser({ commit }, selectinguser) {
     commit("SET_SELECT_USER", selectinguser);
+  },
+
+  updateRepoName({ commit }, selectinguser) {
+    commit("SET_REPO_NAME", selectinguser);
   },
 
   searchUsers({ commit, state }) {
@@ -69,12 +93,35 @@ const actions = {
         commit("SET_REPOS", response.data);
       });
   },
+
   fetchStarred({ commit, state }) {
     Vue.axios
       .get(`https://api.github.com/users/${state.mainsearch}/starred`)
       .then(response => {
         commit("SET_STARRED", response.data);
       });
+  },
+
+  fetchFollowing({ commit, state }) {
+    Vue.axios
+      .get(`https://api.github.com/users/${state.mainsearch}/following`)
+      .then(response => {
+        commit("SET_FOLLOWING", response.data);
+      });
+  },
+
+  fetchFollowers({ commit, state }) {
+    Vue.axios
+      .get(`https://api.github.com/users/${state.mainsearch}/followers`)
+      .then(response => {
+        commit("SET_FOLLOWERS", response.data);
+      });
+  },
+
+  fetchRepoDetail({ commit, state }, user) {
+    Vue.axios.get(`https://api.github.com/repos/${user}/${state.reponame}`).then(response => {
+      commit("SET_REPODETAIL", response.data);
+    });
   }
 };
 

@@ -9,7 +9,7 @@ import VueRouter from "vue-router";
 Vue.use(VueRouter);
 
 import Search from "./components/Search.vue";
-import Repos from "./components/Repos.vue";
+import RepoDetail from "./components/RepoDetail.vue";
 import Profile from "./components/Profile.vue";
 
 Vue.use(VueAxios, axios);
@@ -19,8 +19,8 @@ Vue.config.productionTip = false;
 const router = new VueRouter({
   routes: [
     { path: "/", component: Search },
-    { path: "/Repos", component: Repos },
-    { path: "/Profile/:username", component: Profile }
+    { path: "/Profile/:username", component: Profile },
+    { path: "/Profile/:username/:repoName", component: RepoDetail }
   ],
   mode: "history"
 });
