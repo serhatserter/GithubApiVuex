@@ -15,7 +15,8 @@ const state = {
   following: [],
   followers: [],
   reponame: "",
-  repodetail: []
+  repodetail: [],
+  forks: []
 };
 
 const getters = {
@@ -62,6 +63,9 @@ const mutations = {
 
   SET_REPODETAIL(state, repodetail) {
     state.repodetail = repodetail;
+  },
+  SET_FORKS(state, forks) {
+    state.forks = forks;
   }
 };
 
@@ -122,7 +126,14 @@ const actions = {
     Vue.axios.get(`https://api.github.com/repos/${user}/${state.reponame}`).then(response => {
       commit("SET_REPODETAIL", response.data);
     });
+  },
+
+  fetchForks({ commit, state }, user) {
+    Vue.axios.get(`https://api.github.com/repos/${user}/${state.reponame}/forks`).then(response => {
+      commit("SET_FORKS", response.data);
+    });
   }
+
 };
 
 const store = new Vuex.Store({

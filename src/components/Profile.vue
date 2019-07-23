@@ -8,11 +8,11 @@
       <br><br>
       
       <b-tabs content-class="mt-3">
-        <b-tab title="Repos" active><repos></repos></b-tab>
+
         <b-tab title="Stars" active><stars></stars></b-tab>
         <b-tab title="Following" active><following></following></b-tab>
         <b-tab title="Followers" active><followers></followers></b-tab>
-
+        <b-tab title="Repos" active><repos></repos></b-tab>
       </b-tabs>
       
   </div>

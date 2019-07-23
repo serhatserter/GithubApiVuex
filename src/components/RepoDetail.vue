@@ -1,14 +1,15 @@
 <template>
 <transition name="fade" mode="out-in">
   <div id="app">
-      <h1>NEW PAGE</h1>
+      <br>
       <h1>{{repodetail.name}}</h1>
-      
+      <p>{{repodetail.description}}</p>
+      <br>
       <b-tabs content-class="mt-3">
-        <b-tab title="Repos" active>Owner</b-tab>
-        <b-tab title="Stars" active>Forks</b-tab>
-        <b-tab title="Following" active>Watchers</b-tab>
-        <b-tab title="Followers" active>Issues</b-tab>
+        <b-tab title="Forks" active><repo-forks></repo-forks></b-tab>
+        <b-tab title="Watchers" active><repo-watchers></repo-watchers></b-tab>
+        <b-tab title="Issues" active>Issues</b-tab>
+        <b-tab title="Owner" active><repo-owner></repo-owner></b-tab>
 
       </b-tabs>
   </div>
@@ -18,10 +19,14 @@
 <script>
 
 import {mapState, mapGetters, mapActions} from 'vuex';
-
+import RepoOwner from './RepoOwner.vue'
+import RepoWatchers from './RepoWatchers.vue'
+import RepoForks from './RepoForks.vue'
 export default {
 
     name: "Profile",
+    components: { RepoOwner, RepoWatchers, RepoForks},
+
     data(){
         return{
             
