@@ -7,9 +7,8 @@
       <label v-for="(follow, i) in following" :key="i">
       <div class="user">     
         
-          <h4>@ {{follow.login}}</h4>
-          <img :src="follow.avatar_url" height="100" width="100"/> 
-
+          <img :src="follow.avatar_url" height="100" width="100"/>
+          <router-link :to="`/Profile/${follow.login}`"><h4>@ {{follow.login}}</h4></router-link>
 
       </div>      
       

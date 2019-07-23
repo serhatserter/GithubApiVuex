@@ -2,8 +2,10 @@
 <transition name="fade" mode="out-in">
   <div id="app">
       <br>
-      <h1>@ {{repodetail.owner.login}}</h1>
       <img :src="repodetail.owner.avatar_url" height="100" width="100"/> 
+      <h2>@ {{repodetail.owner.login}}</h2>
+      <b-button :to="`/Profile/${repodetail.owner.login}`">See Profile</b-button><br>
+
       
       <br>
 
@@ -45,6 +47,19 @@ export default {
       'updateRepoName',
       'fetchRepoDetail'
     ]),
+
+    Refresh(){
+      
+      this.updateMainSearch(this.$route.params.username);
+      
+      this.fetchUserDetail();
+      this.searchRepos();
+      this.fetchStarred();
+      this.fetchFollowing();
+      this.fetchFollowers();
+
+
+    }
 
   },
 

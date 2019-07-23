@@ -16,7 +16,8 @@ const state = {
   followers: [],
   reponame: "",
   repodetail: [],
-  forks: []
+  forks: [],
+  issues: []
 };
 
 const getters = {
@@ -35,6 +36,10 @@ const mutations = {
 
   SET_USERS(state, users) {
     state.users = users;
+  },
+
+  SET_USER_DETAIL(state, userdetails) {
+    state.userdetails = userdetails;
   },
 
   SET_REPOS(state, repos) {
@@ -66,6 +71,9 @@ const mutations = {
   },
   SET_FORKS(state, forks) {
     state.forks = forks;
+  },
+  SET_ISSUES(state, issues) {
+    state.issues = issues;
   }
 };
 
@@ -87,6 +95,13 @@ const actions = {
       .get(`https://api.github.com/search/users?q=${state.mainsearch}`)
       .then(response => {
         commit("SET_USERS", response.data.items);
+      });
+  },
+  fetchUserDetail({ commit, state }) {
+    Vue.axios
+      .get(`https://api.github.com/users/${state.mainsearch}`)
+      .then(response => {
+        commit("SET_USER_DETAIL", response.data);
       });
   },
 
@@ -123,17 +138,26 @@ const actions = {
   },
 
   fetchRepoDetail({ commit, state }, user) {
-    Vue.axios.get(`https://api.github.com/repos/${user}/${state.reponame}`).then(response => {
-      commit("SET_REPODETAIL", response.data);
-    });
+    Vue.axios
+      .get(`https://api.github.com/repos/${user}/${state.reponame}`)
+      .then(response => {
+        commit("SET_REPODETAIL", response.data);
+      });
   },
-
+  fetchIssues({ commit, state }, user) {
+    Vue.axios
+      .get(`https://api.github.com/repos/${user}/${state.reponame}/issues`)
+      .then(response => {
+        commit("SET_ISSUES", response.data);
+      });
+  },
   fetchForks({ commit, state }, user) {
-    Vue.axios.get(`https://api.github.com/repos/${user}/${state.reponame}/forks`).then(response => {
-      commit("SET_FORKS", response.data);
-    });
+    Vue.axios
+      .get(`https://api.github.com/repos/${user}/${state.reponame}/forks`)
+      .then(response => {
+        commit("SET_FORKS", response.data);
+      });
   }
-
 };
 
 const store = new Vuex.Store({
