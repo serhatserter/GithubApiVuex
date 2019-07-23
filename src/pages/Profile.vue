@@ -48,10 +48,10 @@
 </template>
 
 <script>
-import Repos from "./Repos.vue";
-import Stars from "./Stars.vue";
-import Following from "./Following.vue";
-import Followers from "./Followers.vue";
+import Repos from '../components/Repos.vue';
+import Stars from "../components/Stars.vue";
+import Following from "../components/Following.vue";
+import Followers from "../components/Followers.vue";
 
 import { mapState, mapGetters, mapActions } from "vuex";
 
@@ -68,7 +68,8 @@ export default {
     ...mapGetters([])
   },
 
-  watch: {
+   watch: {
+
     "$route.params.username": function() {
       this.pageLoad();
     }
@@ -86,20 +87,26 @@ export default {
       "fetchUserDetail"
     ]),
 
-    pageLoad() {
-      this.updateMainSearch(this.$route.params.username);
+    async pageLoad() {
+      await this.updateMainSearch(this.$route.params.username);
 
-      this.fetchUserDetail();
-      this.searchRepos();
-      this.fetchStarred();
-      this.fetchFollowing();
-      this.fetchFollowers();
-    }
+      await this.fetchUserDetail();
+      await this.searchRepos();
+      await this.fetchStarred();
+      await this.fetchFollowing();
+      await this.fetchFollowers();
+    },
+
   },
 
-  created() {
-    this.pageLoad();
+  async created() {
+    this.$store.commit("SET_LOADING", true);
+    await this.pageLoad();
+    this.$store.commit("SET_LOADING", false);
+  
   }
+
+  
 
 };
 </script>

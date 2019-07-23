@@ -3,14 +3,15 @@
     <div class="issues">
       <label v-for="(issue, i) in issues" :key="i">
         <div class="issue">
+          <br>
           <h3>{{issue.title}}</h3>
-
+           <b-button :href="`${issue.html_url}`" target="_blank">Go to Issue</b-button>
+           <br><br>
           <img :src="issue.user.avatar_url" height="100" width="100" />
           <router-link :to="`/Profile/${issue.user.login}`">
             <h4>@ {{issue.user.login}}</h4>
           </router-link>
-          <br />
-          <b-button :href="`${issue.html_url}`" target="_blank">Go to Issue</b-button>
+          <br>
         </div>
       </label>
     </div>
@@ -21,7 +22,7 @@
 import { mapState, mapGetters, mapActions } from "vuex";
 
 export default {
-  name: "RepoWatchers",
+  name: "RepoIssues",
 
   data() {
     return {};
@@ -63,6 +64,5 @@ img {
   background-color: white;
   width: 500px;
   padding: 10px;
-  border-style: solid;
 }
 </style>

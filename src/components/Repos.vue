@@ -20,7 +20,7 @@
 
 <script>
 import { mapState, mapGetters, mapActions } from "vuex";
-import RepoDetail from "./RepoDetail.vue";
+import RepoDetail from '../pages/RepoDetail.vue';
 
 export default {
   components: { RepoDetail },
@@ -30,8 +30,7 @@ export default {
   },
 
   computed: {
-    ...mapState(["mainsearch", "repos", "repodetail", "reponame"]),
-
+    ...mapState(["mainsearch", "repos", "repodetail", "reponame"])
   },
 
   methods: {

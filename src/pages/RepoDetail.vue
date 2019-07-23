@@ -1,11 +1,11 @@
 <template>
     <div id="app">
-
+      <div class="repoTitle">
       <br />
       <h1>{{repodetail.name}}</h1>
       <p>{{repodetail.description}}</p>
       <br />
-
+      </div>
       <b-tabs content-class="mt-3">
 
         <b-tab title="Forks" active>
@@ -30,10 +30,10 @@
 
 <script>
 import { mapState, mapGetters, mapActions } from "vuex";
-import RepoOwner from "./RepoOwner.vue";
-import RepoWatchers from "./RepoWatchers.vue";
-import RepoForks from "./RepoForks.vue";
-import RepoIssues from "./RepoIssues.vue";
+import RepoOwner from "../components/RepoOwner.vue";
+import RepoWatchers from "../components/RepoWatchers.vue";
+import RepoForks from "../components/RepoForks.vue";
+import RepoIssues from "../components/RepoIssues.vue";
 export default {
   name: "Profile",
   components: { RepoOwner, RepoWatchers, RepoForks, RepoIssues },
@@ -66,4 +66,10 @@ img {
   border-style: solid;
   border-color: lightgray;
 }
+
+.repoTitle{
+    background-color: darkslategray;
+  color:whitesmoke;
+}
+
 </style>

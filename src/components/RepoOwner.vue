@@ -2,8 +2,8 @@
 <transition name="fade" mode="out-in">
   <div id="app">
       <br>
-      <img :src="repodetail.owner.avatar_url" height="100" width="100"/> 
-      <h2>@ {{repodetail.owner.login}}</h2>
+      <img :src="repodetail.owner.avatar_url" height="250" width="250"/> 
+      <h1>@ {{repodetail.owner.login}}</h1>
       <b-button :to="`/Profile/${repodetail.owner.login}`">See Profile</b-button><br>
 
       

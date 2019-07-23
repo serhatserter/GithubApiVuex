@@ -8,9 +8,9 @@ import VueRouter from "vue-router";
 
 Vue.use(VueRouter);
 
-import Search from "./components/Search.vue";
-import RepoDetail from "./components/RepoDetail.vue";
-import Profile from "./components/Profile.vue";
+import Search from "./pages/Search.vue";
+import RepoDetail from "./pages/RepoDetail.vue";
+import Profile from "./pages/Profile.vue";
 
 Vue.use(VueAxios, axios);
 

@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters, mapActions } from "vuex";
+import { mapState, mapActions } from "vuex";
 
 export default {
   data() {
@@ -36,7 +36,6 @@ export default {
 </script>
 
 <style>
-@import "https://cdn.jsdelivr.net/npm/animate.css@3.5.1";
 
 .user {
   display: inline-block;
